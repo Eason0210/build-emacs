@@ -1,0 +1,3 @@
+#+title: Shell Script to Build Emacs
+
+Bash Shell scripts for building [[https://git.savannah.gnu.org/cgit/emacs.git/][GNU/Emacs]] on macOS.
