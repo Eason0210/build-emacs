@@ -66,23 +66,13 @@ cd "$ROOT_DIR/emacs-tarballs" && $TAR_CMD -xjf "${ROOT_DIR}/emacs-tarballs/${ema
 echo "Unzipping ${emacssrc}.tar.gz suceeded! "
 
 cd "${ROOT_DIR}/emacs-tarballs/${emacssrc}"
-
-# echo "
-# Moving ${emacssrc} to $SRC_DIR
-# "
-
-# [[ -n "$SRC_DIR" ]] && echo "The directory emacs-gnu allready existed, remove it." && rm -rf "emacs-gnu"
-
-# mv "${ROOT_DIR}/emacs-tarballs/${emacssrc}" "${HOME}/src/" && echo "Moved $emacssrc as emacs-gnu successfuly!"
-# cd "${HOME}/src" && mv "${emacssrc}" "emacs-gnu"
+echo "Current directory is: " && pwd
 
 echo "
 # ======================================================
 # Autogen/copy_autogen
 # ======================================================
 "
-
-# cd "${SRC_DIR}"
 
 # Generate config files
 ./autogen.sh
@@ -136,74 +126,11 @@ echo "Build Emacs DONE!"
 
 echo "
 # ======================================================
-# Delete old app & Move new app
+# Log files is located at:
+# "${ROOT_DIR}/emacs-tarballs/${emacssrc}/bootstrap-log.txt"
+# "${ROOT_DIR}/emacs-tarballs/${emacssrc}/build-log.txt"
 # ======================================================
 "
-
-# Close any emacs sessions
-# pkill -i emacs
-
-# Remove old emacs
-# See https://stackoverflow.com/a/677212/6277148
-# and https://stackoverflow.com/a/638980/6277148
-# for discussion of confitional checks for files
-
-# if [ -e /Applications/Emacs.app ]
-# then
-#    if command -v trash </dev/null 2>&1
-#    then
-#     echo "Trashing old emacs..."
-#     trash /Applications/Emacs.app
-#    else
-#     echo "Removing old emacs..."
-#     rm -rf /Applications/Emacs.app
-#    fi
-# fi
-
-# Move build to applications folder
-# mv ${SRC_DIR}/nextstep/Emacs.app /Applications/Emacs.app
-
-# echo "Move ${SRC_DIR}/nextstep/Emacs.app to /Applications folder DONE!"
-
-echo "
-# ======================================================
-# Copy C Source Code
-# ======================================================
-"
-
-# Copy C source files to Emacs
-# cp -r ${SRC_DIR}/src /c/opt/emacs
-
-echo "Copy C Source Code Canceled!"
-
-echo "
-# ======================================================
-# Create Log files
-# ======================================================
-"
-
-# Make a directory for the build's log files and move them there
-# Note that this removes a previous identical dir if making multiple similar builds
-
-# cur_dateTime="`date +%Y-%m-%d`"
-# echo "Current day is: $cur_dateTime"
-# mkdir -p ${ROOT_DIR}/build-logs/
-# mv ${SRC_DIR}/config.log ${ROOT_DIR}/build-logs/config-${cur_dateTime}.log
-# mv ${SRC_DIR}/build-log.txt ${ROOT_DIR}/build-logs/build-log-${cur_dateTime}.txt
-# mv ${SRC_DIR}/bootstrap-log.txt ${ROOT_DIR}/build-logs/bootstrap-log-${cur_dateTime}.txt
-
-# echo "Create Log files DONE!"
-
-echo "
-# ======================================================
-# Cleanup
-# ======================================================
-"
-
-# Delete build dir
-# rm -rf ${BUILD_DIR}
-
-# echo "DONE!"
 
 echo "
 # ======================================================
