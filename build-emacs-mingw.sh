@@ -41,7 +41,7 @@ else
     emacssrc="emacs-emacs-29"
 fi
 
-pwd
+echo "Current directory is: " && pwd
 
 [[ -n "${ROOT_DIR}/emacs-tarballs/${emacssrc}.tar.gz" ]] && rm "${ROOT_DIR}/emacs-tarballs/${emacssrc}.tar.gz" && echo "Removed the old ${emacssrc}.tar.gz"
 
