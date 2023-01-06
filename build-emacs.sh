@@ -19,6 +19,9 @@ SRC_BASE_URL="https://git.savannah.gnu.org/cgit/emacs.git/snapshot/emacs"
 # Use on Windows OS only
 INSTALL_DIR="/c/opt/emacs-build"
 
+# Set to "OFF" to turn off proxy
+PROXY="ON"
+
 echo "
 # ======================================================
 # Start with a clean build
@@ -53,8 +56,8 @@ Wget Will download source code from URL: ${emacs_src_url}
 "
 echo "Current directory is: " && pwd
 
-export https_proxy="http://127.0.0.1:8889"
-export http_proxy="http://127.0.0.1:8889"
+# Enable proxy
+[[ "$PROXY" = "ON" ]] && export https_proxy="http://127.0.0.1:8889"
 
 echo "
 Now using https proxy!
