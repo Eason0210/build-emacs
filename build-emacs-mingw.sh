@@ -140,7 +140,7 @@ echo "
 "
 
 END_DATE=$(date +"%s")
-ELAPSED_TIME=$(($START_DATE-$END_DATE))
+ELAPSED_TIME=$(($END_DATE-$START_DATE))
 
 echo "Duration: $(expr $ELAPSED_TIME / 3600)h: $(expr $ELAPSED_TIME % 3600 / 60)m : $(expr $ELAPSED_TIME % 60)s"
 echo "Build script finished!"
