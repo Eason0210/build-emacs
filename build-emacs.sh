@@ -255,7 +255,7 @@ modify $HOME/.zshrc or $HOME/.zshenv accordingly
 "
 else
     echo "
-# Please rename C:\opt\emacs-build to C:\opt\emacs
+# Please rename ${INSTALL_DIR} to C:\opt\emacs
 # And add C:\opt\emacs\bin to your Path environment
 # ======================================================
 "
