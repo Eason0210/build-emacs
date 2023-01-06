@@ -65,14 +65,16 @@ TAR_CMD="/c/Windows/system32/tar.exe"
 cd "$ROOT_DIR/emacs-tarballs" && $TAR_CMD -xjf "${ROOT_DIR}/emacs-tarballs/${emacssrc}.tar.gz" || echo "Ger error when tar -xjf ${emacssrc}.tar.gz"
 echo "Unzipping ${emacssrc}.tar.gz suceeded! "
 
-echo "
-Moving ${emacssrc} to $SRC_DIR
-"
+cd "${ROOT_DIR}/emacs-tarballs/${emacssrc}"
 
-[[ -n "$SRC_DIR" ]] && echo "The directory emacs-gnu allready existed, remove it." && rm -rf "emacs-gnu"
+# echo "
+# Moving ${emacssrc} to $SRC_DIR
+# "
 
-mv "${ROOT_DIR}/emacs-tarballs/${emacssrc}" "${HOME}/src/" && echo "Moved $emacssrc as emacs-gnu successfuly!"
-cd "${HOME}/src" && mv "${emacssrc}" "emacs-gnu"
+# [[ -n "$SRC_DIR" ]] && echo "The directory emacs-gnu allready existed, remove it." && rm -rf "emacs-gnu"
+
+# mv "${ROOT_DIR}/emacs-tarballs/${emacssrc}" "${HOME}/src/" && echo "Moved $emacssrc as emacs-gnu successfuly!"
+# cd "${HOME}/src" && mv "${emacssrc}" "emacs-gnu"
 
 echo "
 # ======================================================
@@ -80,7 +82,8 @@ echo "
 # ======================================================
 "
 
-cd "${SRC_DIR}"
+# cd "${SRC_DIR}"
+
 # Generate config files
 ./autogen.sh
 
@@ -182,14 +185,14 @@ echo "
 # Make a directory for the build's log files and move them there
 # Note that this removes a previous identical dir if making multiple similar builds
 
-cur_dateTime="`date +%Y-%m-%d`"
-echo "Current day is: $cur_dateTime"
-mkdir -p ${ROOT_DIR}/build-logs/
-mv ${SRC_DIR}/config.log ${ROOT_DIR}/build-logs/config-${cur_dateTime}.log
-mv ${SRC_DIR}/build-log.txt ${ROOT_DIR}/build-logs/build-log-${cur_dateTime}.txt
-mv ${SRC_DIR}/bootstrap-log.txt ${ROOT_DIR}/build-logs/bootstrap-log-${cur_dateTime}.txt
+# cur_dateTime="`date +%Y-%m-%d`"
+# echo "Current day is: $cur_dateTime"
+# mkdir -p ${ROOT_DIR}/build-logs/
+# mv ${SRC_DIR}/config.log ${ROOT_DIR}/build-logs/config-${cur_dateTime}.log
+# mv ${SRC_DIR}/build-log.txt ${ROOT_DIR}/build-logs/build-log-${cur_dateTime}.txt
+# mv ${SRC_DIR}/bootstrap-log.txt ${ROOT_DIR}/build-logs/bootstrap-log-${cur_dateTime}.txt
 
-echo "Create Log files DONE!"
+# echo "Create Log files DONE!"
 
 echo "
 # ======================================================
