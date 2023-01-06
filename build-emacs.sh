@@ -38,10 +38,10 @@ cd "${ROOT_DIR}/emacs-tarballs"
 # https://git.savannah.gnu.org/cgit/emacs.git/snapshot/emacs-master.tar.gz
 
 if test -n "$1"; then
-    tarball_url="${SRC_BASE_URL}-${1}.tar.gz"
+    emacs_src_url="${SRC_BASE_URL}-${1}.tar.gz"
     emacs_src="emacs-${1}"
 else
-    tarball_url="${SRC_BASE_URL}-emacs-29.tar.gz"
+    emacs_src_url="${SRC_BASE_URL}-emacs-29.tar.gz"
     emacs_src="emacs-emacs-29"
 fi
 
@@ -49,7 +49,7 @@ tarball_file="${ROOT_DIR}/emacs-tarballs/${emacs_src}.tar.gz"
 [[ -f "$tarball_file" ]] && rm "$tarball_file" && echo "Removed the $tarball_file"
 
 echo "
-Wget Will download source code from URL: $tarball_url
+Wget Will download source code from URL: $emacs_src_url
 "
 echo "Current directory is: " && pwd
 
@@ -61,7 +61,7 @@ Now using https proxy!
 "
 
 # Download the source code from Emacs repo
-wget $tarball_url && echo "The ${tarball_file} have been download!"
+wget $emacs_src_url && echo "The ${tarball_file} have been download!"
 
 # unzip
 
