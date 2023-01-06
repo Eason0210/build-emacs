@@ -65,10 +65,10 @@ wget $tarurl && echo "The ${tarball_file} have been download!"
 
 # unzip
 
-if [[ "$OSTYPE" =~ ^darwin ]]; then
-    TAR_CMD="tar"
-else
+if [[ "$OSTYPE" =~ ^msys ]]; then
     TAR_CMD="/c/Windows/system32/tar.exe"
+else
+    TAR_CMD="tar"
 fi
 
 $TAR_CMD -xjf $tarball_file || echo "Ger error when tar -xjf ${tarball_file}"
@@ -132,15 +132,12 @@ echo "
 # ======================================================
 "
 # Check the install directory for Windows build
-if [[ "$OSTYPE" =~ ^darwin ]]; then
-    :
-else
+if [[ "$OSTYPE" =~ ^msys ]]; then
     # If "$INSTALL_DIR" exit, remove it and create a new one
     [[ -d "$INSTALL_DIR" ]] && rm -rf "$INSTALL_DIR" && mkdir -p "$INSTALL_DIR"
 
     # if "$INSTALL_DIR" not exit, create a new one
     [[ -d "$INSTALL_DIR" ]] || mkdir -p "$INSTALL_DIR"
-
 fi
 
 # Check number of processors & use as many as we can!
@@ -149,10 +146,11 @@ NCPU=$(expr $(getconf _NPROCESSORS_ONLN) / 2)
 # Send output to log file using tee
 # See https://stackoverflow.com/a/60432203/6277148
 
-if [[ "$OSTYPE" =~ ^darwin ]]; then
-    make -j$NCPU | tee bootstrap-log.txt || exit 1 && make install -j$NCPU | tee build-log.txt
-else
+if [[ "$OSTYPE" =~ ^msys ]]; then
     make -j$NCPU | tee bootstrap-log.txt || exit 1 && make install -j$NCPU prefix=$INSTALL_DIR | tee build-log.txt
+else
+    make -j$NCPU | tee bootstrap-log.txt || exit 1 && make install -j$NCPU | tee build-log.txt
+
 fi
 
 echo "Build Emacs DONE!"
