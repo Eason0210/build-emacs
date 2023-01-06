@@ -44,7 +44,7 @@ else
     emacssrc="emacs-emacs-29"
 fi
 
-[[ -n "$HOME/src/emacs-tarballs/${emacssrc}.tar.gz" ]] && rm "${emacssrc}.tar.gz" echo "Removed the old ${emacssrc}.tar.gz"
+[[ -n "$HOME/src/emacs-tarballs/${emacssrc}.tar.gz" ]] && rm "${emacssrc}.tar.gz" && echo "Removed the old ${emacssrc}.tar.gz"
 
 echo "
 Wget Will download source code from URL: $tarurl
