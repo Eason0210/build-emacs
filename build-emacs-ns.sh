@@ -62,8 +62,8 @@ wget $tarurl && echo "The ${emacssrc}.tar.gz have been download!"
 
 # unzip
 
-cd "$ROOT_DIR/emacs-tarballs" && tar -xjf "${ROOT_DIR}/emacs-tarballs/${emacssrc}.tar.gz" || echo "Ger error when tar -xjf ${emacssrc}.tar.gz"
-echo "Unzipping ${emacssrc}.tar.gz suceeded! "
+tar -xjf $tarball_file || echo "Ger error when tar -xjf ${tarball_file}"
+echo "Unzipping ${tarball_file} suceeded!"
 
 
 cd "${ROOT_DIR}/emacs-tarballs/${emacssrc}"

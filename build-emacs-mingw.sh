@@ -64,8 +64,9 @@ wget $tarurl && echo "The ${tarball_file} have been download!"
 # unzip
 
 TAR_CMD="/c/Windows/system32/tar.exe"
-cd "$ROOT_DIR/emacs-tarballs" && $TAR_CMD -xjf "${ROOT_DIR}/emacs-tarballs/${emacssrc}.tar.gz" || echo "Ger error when tar -xjf ${emacssrc}.tar.gz"
-echo "Unzipping ${emacssrc}.tar.gz suceeded! "
+$TAR_CMD -xjf $tarball_file || echo "Ger error when tar -xjf ${tarball_file}"
+echo "Unzipping ${tarball_file} suceeded!"
+
 
 cd "${ROOT_DIR}/emacs-tarballs/${emacssrc}"
 echo "Current directory is: " && pwd
