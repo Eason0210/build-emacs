@@ -15,6 +15,7 @@ START_DATE=$(date +"%s")
 ROOT_DIR="`pwd`"
 SRC_DIR="$HOME/src/emacs-gnu"
 BASE_URL="https://git.savannah.gnu.org/cgit/emacs.git/snapshot/emacs"
+INSTALL_DIR="/c/opt/emacs-build"
 
 echo "
 # ======================================================
@@ -109,18 +110,18 @@ echo "
 # Build and install everything
 # ======================================================
 "
-# If "/c/opt/emacs-build" exit, remove it and create a new one
-[[ -n "/c/opt/emacs-build" ]] && rm -rf "/c/opt/emacs-build" && mkdir -p "/c/opt/emacs-build"
+# If "$INSTALL_DIR" exit, remove it and create a new one
+[[ -n "$INSTALL_DIR" ]] && rm -rf "$INSTALL_DIR" && mkdir -p "$INSTALL_DIR"
 
-# if "/c/opt/emacs-build" not exit, create a new one
-[[ -z "/c/opt/emacs-build" ]] || mkdir -p "/c/opt/emacs-build"
+# if "$INSTALL_DIR" not exit, create a new one
+[[ -z "$INSTALL_DIR" ]] || mkdir -p "$INSTALL_DIR"
 
 # Check number of processors & use as many as we can!
 NCPU=$(expr $(getconf _NPROCESSORS_ONLN) / 2)
 
 # Send output to log file using tee
 # See https://stackoverflow.com/a/60432203/6277148
-make -j$NCPU | tee bootstrap-log.txt || exit 1 && make install -j$NCPU prefix=/c/opt/emacs-build | tee build-log.txt
+make -j$NCPU | tee bootstrap-log.txt || exit 1 && make install -j$NCPU prefix=$INSTALL_DIR | tee build-log.txt
 
 echo "Build Emacs DONE!"
 
