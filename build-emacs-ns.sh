@@ -14,7 +14,6 @@
 
 START_DATE=$(date +"%s")
 ROOT_DIR="`pwd`"
-SRC_DIR=$HOME/src/emacs-gnu/
 # SITELISP=/Applications/Emacs.app/Contents/Resources/site-lisp
 BASE_URL="https://git.savannah.gnu.org/cgit/emacs.git/snapshot/emacs"
 
@@ -24,10 +23,9 @@ echo "
 # ======================================================
 "
 
-rm -rf ${BUILD_DIR}
-mkdir ${BUILD_DIR}
+mkdir -p "${ROOT_DIR}/emacs-tarballs"
+cd "${ROOT_DIR}/emacs-tarballs"
 
-cd ${SRC_DIR}/../emacs-tarballs
 
 # ======================================================
 # Input commit-id or "master" otherwise default to emacs-29 branch
@@ -45,7 +43,8 @@ else
     emacssrc="emacs-emacs-29"
 fi
 
-[[ -n "$HOME/src/emacs-tarballs/${emacssrc}.tar.gz" ]] && rm "${emacssrc}.tar.gz" && echo "Removed the old ${emacssrc}.tar.gz"
+tarball_file="${ROOT_DIR}/emacs-tarballs/${emacssrc}.tar.gz"
+[[ -n "$tarball_file" ]] && rm "$tarball_file" && echo "Removed the $tarball_file"
 
 echo "
 Wget Will download source code from URL: $tarurl
@@ -63,16 +62,14 @@ wget $tarurl && echo "The ${emacssrc}.tar.gz have been download!"
 
 # unzip
 
-cd $SRC_DIR/../ && tar -xjf $SRC_DIR/../emacs-tarballs/${emacssrc}.tar.gz || echo "Ger error when tar -xjf ${emacssrc}.tar.gz"
+cd "$ROOT_DIR/emacs-tarballs" && tar -xjf "${ROOT_DIR}/emacs-tarballs/${emacssrc}.tar.gz" || echo "Ger error when tar -xjf ${emacssrc}.tar.gz"
 echo "Unzipping ${emacssrc}.tar.gz suceeded! "
 
-echo "
-Moving ${emacssrc} to $SRC_DIR
-"
 
-[[ -n "$SRC_DIR" ]] && echo "The directory emacs-gnu allready existed, remove it." && rm -rf emacs-gnu
+cd "${ROOT_DIR}/emacs-tarballs/${emacssrc}"
+echo "Current directory is: " && pwd
 
-mv "$emacssrc" "emacs-gnu" && echo "Moved $emacssrc as emacs-gnu successfuly!"
+SRC_DIR="${ROOT_DIR}/emacs-tarballs/${emacssrc}"
 
 echo "
 # ======================================================
@@ -80,7 +77,6 @@ echo "
 # ======================================================
 "
 
-cd "emacs-gnu"
 # Generate config files
 ./autogen.sh
 
@@ -182,7 +178,8 @@ echo "
 # Make a directory for the build's log files and move them there
 # Note that this removes a previous identical dir if making multiple similar builds
 
-cur_dateTime="`date +%Y-%m-%d`"
+
+cur_dateTime="`date +%Y-%m-%d`"-T"`date +%H-%M-%S`"
 echo "Current day is: $cur_dateTime"
 mkdir -p ${ROOT_DIR}/build-logs/
 mv ${SRC_DIR}/config.log ${ROOT_DIR}/build-logs/config-${cur_dateTime}.log
@@ -198,9 +195,9 @@ echo "
 "
 
 # Delete build dir
-# rm -rf ${BUILD_DIR}
+rm -rf ${SRC_DIR}
 
-# echo "DONE!"
+echo "Cleanup DONE!"
 
 echo "
 # ======================================================
@@ -219,13 +216,6 @@ export PATH=$PATH:/Applications/Emacs.app/Contents/MacOS/bin
 echo "execs added to this terminal session -- please
 modify $HOME/.zshrc or $HOME/.zshenv accordingly"
 
-echo "
-# ======================================================
-# Open new emacs
-# ======================================================
-"
-
-open /Applications/Emacs.app
 
 END_DATE=$(date +"%s")
 ELAPSED_TIME=$(($END_DATE-$START_DATE))
