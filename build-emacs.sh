@@ -212,7 +212,7 @@ echo "
 # Note that this removes a previous identical dir if making multiple similar builds
 
 
-cur_dateTime="`date +%Y-%m-%d`"-T"`date +%H-%M-%S`"
+cur_dateTime="`date +%Y-%m-%d`-T`date +%H-%M-%S`"
 echo "Current day is: $cur_dateTime"
 mkdir -p ${ROOT_DIR}/build-logs/
 mv "${SRC_DIR}/config.log" "${ROOT_DIR}/build-logs/config-${cur_dateTime}.log"
