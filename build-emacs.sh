@@ -191,17 +191,16 @@ then
     echo "Move ${SRC_DIR}/nextstep/Emacs.app to /Applications folder DONE!"
 
 
-
     echo "
-    # ======================================================
-    # Copy C Source Code
-    # ======================================================
-    "
+# ======================================================
+# Copy C Source Code
+# ======================================================
+"
 
     # Copy C source files to Emacs
     cp -r ${SRC_DIR}/src /Applications/Emacs.app/Contents/Resources/
 
-    echo "Copy C Source Code DONE!"
+    echo "DONE!"
 
 fi
 
@@ -222,7 +221,7 @@ mv "${SRC_DIR}/config.log" "${ROOT_DIR}/build-logs/config-${cur_dateTime}.log"
 mv "${SRC_DIR}/build-log.txt" "${ROOT_DIR}/build-logs/build-log-${cur_dateTime}.txt"
 mv "${SRC_DIR}/bootstrap-log.txt" "${ROOT_DIR}/build-logs/bootstrap-log-${cur_dateTime}.txt"
 
-echo "Create Log files DONE!"
+echo "DONE!"
 
 echo "
 # ======================================================
@@ -233,7 +232,7 @@ echo "
 # Delete build dir
 rm -rf ${SRC_DIR}
 
-echo "Cleanup DONE!"
+echo "DONE!"
 
 echo "
 # ======================================================
@@ -243,24 +242,25 @@ echo "
 
 if [[ "$OSTYPE" =~ ^darwin ]]; then
     echo "
-    # Be sure to add /Applications/Emacs.app/Contents/MacOS/bin
-    # to your .zshrc or .profile path like so:
-    # export PATH=\$PATH:/Applications/Emacs.app/Contents/MacOS
-    # export PATH=\$PATH:/Applications/Emacs.app/Contents/MacOS/bin
-    # ======================================================
-    "
+# Be sure to add /Applications/Emacs.app/Contents/MacOS/bin
+# to your .zshrc or .profile path like so:
+# export PATH=\$PATH:/Applications/Emacs.app/Contents/MacOS
+# export PATH=\$PATH:/Applications/Emacs.app/Contents/MacOS/bin
+# ======================================================
+"
     export PATH=$PATH:/Applications/Emacs.app/Contents/MacOS
     export PATH=$PATH:/Applications/Emacs.app/Contents/MacOS/bin
 
-    echo "execs added to this terminal session -- please
-    modify $HOME/.zshrc or $HOME/.zshenv accordingly"
+    echo "
+execs added to this terminal session -- please
+modify $HOME/.zshrc or $HOME/.zshenv accordingly
+"
 else
     echo "
-    # Please rename C:\opt\emacs-build to C:\opt\emacs
-    # And add C:\opt\emacs\bin to your Path environment
-    # ======================================================
-    "
-
+# Please rename C:\opt\emacs-build to C:\opt\emacs
+# And add C:\opt\emacs\bin to your Path environment
+# ======================================================
+"
 fi
 
 
