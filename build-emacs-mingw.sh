@@ -13,7 +13,6 @@
 # ======================================================
 START_DATE=$(date +"%s")
 ROOT_DIR="`pwd`"
-SRC_DIR="$HOME/src/emacs-gnu"
 BASE_URL="https://git.savannah.gnu.org/cgit/emacs.git/snapshot/emacs"
 INSTALL_DIR="/c/opt/emacs-build"
 
@@ -68,6 +67,8 @@ echo "Unzipping ${emacssrc}.tar.gz suceeded! "
 
 cd "${ROOT_DIR}/emacs-tarballs/${emacssrc}"
 echo "Current directory is: " && pwd
+
+SRC_DIR="${ROOT_DIR}/emacs-tarballs/${emacssrc}"
 
 echo "
 # ======================================================
@@ -132,12 +133,22 @@ echo "
 cur_dateTime="`date +%Y-%m-%d`"-T"`date +%H-%M-%S`"
 echo "Current day is: $cur_dateTime"
 mkdir -p ${ROOT_DIR}/build-logs/
-mv ${SRC_DIR}/config.log ${ROOT_DIR}/build-logs/config-${cur_dateTime}.log
-mv ${SRC_DIR}/build-log.txt ${ROOT_DIR}/build-logs/build-log-${cur_dateTime}.txt
-mv ${SRC_DIR}/bootstrap-log.txt ${ROOT_DIR}/build-logs/bootstrap-log-${cur_dateTime}.txt
+mv "${SRC_DIR}/config.log" "${ROOT_DIR}/build-logs/config-${cur_dateTime}.log"
+mv "${SRC_DIR}/build-log.txt" "${ROOT_DIR}/build-logs/build-log-${cur_dateTime}.txt"
+mv "${SRC_DIR}/bootstrap-log.txt" "${ROOT_DIR}/build-logs/bootstrap-log-${cur_dateTime}.txt"
 
 echo "Create Log files DONE!"
 
+echo "
+# ======================================================
+# Cleanup
+# ======================================================
+"
+
+# Delete build dir
+rm -rf ${SRC_DIR}
+
+echo "DONE!"
 
 echo "
 # ======================================================
