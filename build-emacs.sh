@@ -136,10 +136,10 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
     :
 else
     # If "$INSTALL_DIR" exit, remove it and create a new one
-    [[ -n "$INSTALL_DIR" ]] && rm -rf "$INSTALL_DIR" && mkdir -p "$INSTALL_DIR"
+    [[ -d "$INSTALL_DIR" ]] && rm -rf "$INSTALL_DIR" && mkdir -p "$INSTALL_DIR"
 
     # if "$INSTALL_DIR" not exit, create a new one
-    [[ -z "$INSTALL_DIR" ]] || mkdir -p "$INSTALL_DIR"
+    [[ -d "$INSTALL_DIR" ]] || mkdir -p "$INSTALL_DIR"
 
 fi
 
