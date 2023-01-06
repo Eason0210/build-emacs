@@ -12,6 +12,7 @@
 # Set Variables
 # ======================================================
 
+START_DATE=$(date +"%s")
 ROOT_DIR="`pwd`"
 SRC_DIR=$HOME/src/emacs-gnu/
 # SITELISP=/Applications/Emacs.app/Contents/Resources/site-lisp
@@ -223,4 +224,8 @@ echo "
 
 open /Applications/Emacs.app
 
+END_DATE=$(date +"%s")
+ELAPSED_TIME=$(($START_DATE-$END_DATE))
+
+echo "Duration: $(expr $ELAPSED_TIME / 3600)h: $(expr $ELAPSED_TIME % 3600 / 60)m : $(expr $ELAPSED_TIME % 60)s"
 echo "Build script finished!"
