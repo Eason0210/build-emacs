@@ -43,7 +43,9 @@ fi
 
 echo "Current directory is: " && pwd
 
-[[ -n "${ROOT_DIR}/emacs-tarballs/${emacssrc}.tar.gz" ]] && rm "${ROOT_DIR}/emacs-tarballs/${emacssrc}.tar.gz" && echo "Removed the old ${emacssrc}.tar.gz"
+tarball_file="${ROOT_DIR}/emacs-tarballs/${emacssrc}.tar.gz"
+[[ -n "$tarball_file" ]] && rm "$tarball_file" && echo "Removed the $tarball_file"
+
 
 echo "
 Wget Will download source code from URL: $tarurl
@@ -57,7 +59,7 @@ echo "
 Now using https proxy!
 "
 
-wget $tarurl && echo "The ${emacssrc}.tar.gz have been download!"
+wget $tarurl && echo "The ${tarball_file} have been download!"
 
 # unzip
 
