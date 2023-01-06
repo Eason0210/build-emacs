@@ -45,11 +45,11 @@ else
     emacs_src="emacs-emacs-29"
 fi
 
-tarball_file="${ROOT_DIR}/emacs-tarballs/${emacs_src}.tar.gz"
-[[ -f "$tarball_file" ]] && rm "$tarball_file" && echo "Removed the $tarball_file"
+emacs_src_tarball="${ROOT_DIR}/emacs-tarballs/${emacs_src}.tar.gz"
+[[ -f "$emacs_src_tarball" ]] && rm "$emacs_src_tarball" && echo "Removed the ${emacs_src_tarball}"
 
 echo "
-Wget Will download source code from URL: $emacs_src_url
+Wget Will download source code from URL: ${emacs_src_url}
 "
 echo "Current directory is: " && pwd
 
@@ -61,7 +61,7 @@ Now using https proxy!
 "
 
 # Download the source code from Emacs repo
-wget $emacs_src_url && echo "The ${tarball_file} have been download!"
+wget $emacs_src_url && echo "The ${emacs_src_tarball} have been download!"
 
 # unzip
 
@@ -71,8 +71,8 @@ else
     TAR_CMD="tar"
 fi
 
-$TAR_CMD -xjf $tarball_file || echo "Ger error when tar -xjf ${tarball_file}"
-echo "Unzipping ${tarball_file} suceeded!"
+$TAR_CMD -xjf $emacs_src_tarball || echo "Ger error when tar -xjf ${emacs_src_tarball}"
+echo "Unzipping ${emacs_src_tarball} suceeded!"
 
 
 cd "${ROOT_DIR}/emacs-tarballs/${emacs_src}"
