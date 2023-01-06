@@ -106,7 +106,10 @@ echo "
 # Note that this renames ctags in emacs so that it doesn't conflict with other
 # installed ctags; see and don't compress info files, etc
 # https://www.topbug.net/blog/2016/11/10/installing-emacs-from-source-avoid-the-conflict-of-ctags/
-./configure
+
+./configure \
+    --with-native-compilation=aot \
+    --without-dbus \
 
 echo "
 # ======================================================
