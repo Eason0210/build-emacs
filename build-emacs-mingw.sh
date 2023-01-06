@@ -118,13 +118,26 @@ make -j$NCPU | tee bootstrap-log.txt || exit 1 && make install -j$NCPU prefix=$I
 
 echo "Build Emacs DONE!"
 
+
 echo "
 # ======================================================
-# Log files is located at:
-# "${ROOT_DIR}/emacs-tarballs/${emacssrc}/bootstrap-log.txt"
-# "${ROOT_DIR}/emacs-tarballs/${emacssrc}/build-log.txt"
+# Create Log files
 # ======================================================
 "
+
+# Make a directory for the build's log files and move them there
+# Note that this removes a previous identical dir if making multiple similar builds
+
+
+cur_dateTime="`date +%Y-%m-%d`"-T"`date +%H-%M-%S`"
+echo "Current day is: $cur_dateTime"
+mkdir -p ${ROOT_DIR}/build-logs/
+mv ${SRC_DIR}/config.log ${ROOT_DIR}/build-logs/config-${cur_dateTime}.log
+mv ${SRC_DIR}/build-log.txt ${ROOT_DIR}/build-logs/build-log-${cur_dateTime}.txt
+mv ${SRC_DIR}/bootstrap-log.txt ${ROOT_DIR}/build-logs/bootstrap-log-${cur_dateTime}.txt
+
+echo "Create Log files DONE!"
+
 
 echo "
 # ======================================================
