@@ -14,7 +14,7 @@
 
 START_DATE=$(date +"%s")
 ROOT_DIR="`pwd`"
-BASE_URL="https://git.savannah.gnu.org/cgit/emacs.git/snapshot/emacs"
+SRC_BASE_URL="https://git.savannah.gnu.org/cgit/emacs.git/snapshot/emacs"
 
 # Use on Windows OS only
 INSTALL_DIR="/c/opt/emacs-build"
@@ -38,18 +38,18 @@ cd "${ROOT_DIR}/emacs-tarballs"
 # https://git.savannah.gnu.org/cgit/emacs.git/snapshot/emacs-master.tar.gz
 
 if test -n "$1"; then
-    tarurl="${BASE_URL}-${1}.tar.gz"
-    emacssrc="emacs-${1}"
+    tarball_url="${SRC_BASE_URL}-${1}.tar.gz"
+    emacs_src="emacs-${1}"
 else
-    tarurl="${BASE_URL}-emacs-29.tar.gz"
-    emacssrc="emacs-emacs-29"
+    tarball_url="${SRC_BASE_URL}-emacs-29.tar.gz"
+    emacs_src="emacs-emacs-29"
 fi
 
-tarball_file="${ROOT_DIR}/emacs-tarballs/${emacssrc}.tar.gz"
+tarball_file="${ROOT_DIR}/emacs-tarballs/${emacs_src}.tar.gz"
 [[ -f "$tarball_file" ]] && rm "$tarball_file" && echo "Removed the $tarball_file"
 
 echo "
-Wget Will download source code from URL: $tarurl
+Wget Will download source code from URL: $tarball_url
 "
 echo "Current directory is: " && pwd
 
@@ -61,7 +61,7 @@ Now using https proxy!
 "
 
 # Download the source code from Emacs repo
-wget $tarurl && echo "The ${tarball_file} have been download!"
+wget $tarball_url && echo "The ${tarball_file} have been download!"
 
 # unzip
 
@@ -75,10 +75,10 @@ $TAR_CMD -xjf $tarball_file || echo "Ger error when tar -xjf ${tarball_file}"
 echo "Unzipping ${tarball_file} suceeded!"
 
 
-cd "${ROOT_DIR}/emacs-tarballs/${emacssrc}"
+cd "${ROOT_DIR}/emacs-tarballs/${emacs_src}"
 echo "Current directory is: " && pwd
 
-SRC_DIR="${ROOT_DIR}/emacs-tarballs/${emacssrc}"
+SRC_DIR="${ROOT_DIR}/emacs-tarballs/${emacs_src}"
 
 echo "
 # ======================================================
