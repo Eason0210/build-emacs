@@ -82,13 +82,6 @@ echo "
 # Set Compile Flags
 # ======================================================
 
-# Use Clang for slightly faster builds
-# See https://leeifrankjaw.github.io/articles/clang_vs_gcc_for_emacs.html
-# See https://alibabatech.medium.com/gcc-vs-clang-llvm-an-in-depth-comparison-of-c-c-compilers-899ede2be378
-# See https://docs.oracle.com/cd/E19957-01/806-3567/cc_options.html for CFLAG option explanations
-# CFLAGS="-g -O2"
-# export CC=clang
-# export OBJC=clang
 
 echo "
 # ======================================================
