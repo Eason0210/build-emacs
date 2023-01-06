@@ -3,10 +3,10 @@
 Bash Shell scripts for building [[https://git.savannah.gnu.org/cgit/emacs.git/][GNU/Emacs]] on macOS and Windows.
 
 * Install dependencies
-- macOS
-  Install by macports or brew
-- Windows
-  Install by mingw64 with msys2
+**  macOS
+Install by macports
+** Windows
+Install by mingw64 with msys2
 
 * Usage
 #+begin_src bash
