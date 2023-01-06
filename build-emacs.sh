@@ -46,7 +46,7 @@ else
 fi
 
 tarball_file="${ROOT_DIR}/emacs-tarballs/${emacssrc}.tar.gz"
-[[ -n "$tarball_file" ]] && rm "$tarball_file" && echo "Removed the $tarball_file"
+[[ -f "$tarball_file" ]] && rm "$tarball_file" && echo "Removed the $tarball_file"
 
 echo "
 Wget Will download source code from URL: $tarurl
