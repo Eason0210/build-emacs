@@ -1,3 +1,20 @@
 #+title: Shell Script to Build Emacs
 
-Bash Shell scripts for building [[https://git.savannah.gnu.org/cgit/emacs.git/][GNU/Emacs]] on macOS.
+Bash Shell scripts for building [[https://git.savannah.gnu.org/cgit/emacs.git/][GNU/Emacs]] on macOS and Windows.
+
+* Install dependencies
+- macOS
+  Install by macports or brew
+- Windows
+  Install by mingw64 with msys2
+
+* Usage
+#+begin_src bash
+git clone https://github.com/Eason0210/build-emacs.git ~/src/build-emacs
+cd ~/src/build-emacs
+
+# Choose one of the following COMMAND to execute
+./build-emacs.sh # default to build latest emacs-29 branch
+./build-emacs.sh master # build latest master branch
+./build-emacs.sh <commit-id> # build the specified <commit-id>
+#+end_src
