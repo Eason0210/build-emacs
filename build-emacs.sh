@@ -13,7 +13,7 @@
 # ======================================================
 
 START_DATE=$(date +"%s")
-ROOT_DIR="`pwd`"
+ROOT_DIR="$(pwd)"
 SRC_BASE_URL="https://git.savannah.gnu.org/cgit/emacs.git/snapshot/emacs"
 
 # Use on Windows OS only
@@ -247,7 +247,7 @@ echo "
 # Note that this removes a previous identical dir if making multiple similar builds
 
 
-cur_dateTime="`date +%Y-%m-%d`-T`date +%H-%M-%S`"
+cur_dateTime="$(date +%Y-%m-%d)-T$(date +%H-%M-%S)"
 echo "Current day is: $cur_dateTime"
 mkdir -p ${ROOT_DIR}/build-logs/
 mv "${SRC_DIR}/config.log" "${ROOT_DIR}/build-logs/config-${cur_dateTime}.log"
