@@ -66,8 +66,9 @@ then
     printf "Git commit hash is valid.\n"
     emacs_src_url="${SRC_BASE_URL}-${GIT_COMMIT}.tar.gz"
     emacs_src="emacs-${GIT_COMMIT}"
-elif [[ -z "$1" ]]
+elif [[ -z "$1" ]] || [[ "$1" = "${NATIVE_COMP}" ]]
 then
+    printf "The emacs-29 branch will be used.\n"
     emacs_src_url="${SRC_BASE_URL}-emacs-29.tar.gz"
     emacs_src="emacs-emacs-29"
 else
