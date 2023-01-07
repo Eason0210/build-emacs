@@ -22,6 +22,25 @@ INSTALL_DIR="/c/opt/emacs-build"
 # Set to "OFF" to turn off proxy
 PROXY="ON"
 
+# Native compilation
+NATIVE_COMP="--with-native-compilation=aot"
+
+NATIVE_COMP_LIST=(
+    "--with-native-compilation=aot"
+    "--with-native-compilation"
+    "--without-native-compilation"
+)
+
+for value; do
+
+    if [[ " ${NATIVE_COMP_LIST[*]} " =~ " ${value} " ]]; then
+        NATIVE_COMP=${value}
+    fi
+done
+
+echo "native-comp: ${NATIVE_COMP}"
+
+
 echo "
 # ======================================================
 # Start with a clean build
@@ -138,7 +157,7 @@ echo "
 # https://www.topbug.net/blog/2016/11/10/installing-emacs-from-source-avoid-the-conflict-of-ctags/
 
 ./configure \
-    --with-native-compilation=aot \
+    ${NATIVE_COMP} \
     --without-dbus \
 
 echo "
