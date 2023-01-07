@@ -40,12 +40,20 @@ cd "${ROOT_DIR}/emacs-tarballs"
 # https://git.savannah.gnu.org/cgit/emacs.git/snapshot/emacs-emacs-29.tar.gz
 # https://git.savannah.gnu.org/cgit/emacs.git/snapshot/emacs-master.tar.gz
 
-if [[ -n "$1" ]]; then
-    emacs_src_url="${SRC_BASE_URL}-${1}.tar.gz"
-    emacs_src="emacs-${1}"
+# Check for valid Git commit hash
+GIT_COMMIT=$1
+if [[ "$GIT_COMMIT" != "master" && "$GIT_COMMIT" != "emacs-29" && ! "$GIT_COMMIT" =~ ^[a-zA-Z0-9]{40}$ ]]; then
+    if [[ -z "$1" ]]; then
+        emacs_src_url="${SRC_BASE_URL}-emacs-29.tar.gz"
+        emacs_src="emacs-emacs-29"
+    else
+        printf "Error! Please give a valid Git commit hash.\n"
+        exit 1
+    fi
 else
-    emacs_src_url="${SRC_BASE_URL}-emacs-29.tar.gz"
-    emacs_src="emacs-emacs-29"
+    printf "Git commit hash is valid.\n"
+    emacs_src_url="${SRC_BASE_URL}-${GIT_COMMIT}.tar.gz"
+    emacs_src="emacs-${GIT_COMMIT}"
 fi
 
 emacs_src_tarball="${ROOT_DIR}/emacs-tarballs/${emacs_src}.tar.gz"
