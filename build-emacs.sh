@@ -40,7 +40,7 @@ cd "${ROOT_DIR}/emacs-tarballs"
 # https://git.savannah.gnu.org/cgit/emacs.git/snapshot/emacs-emacs-29.tar.gz
 # https://git.savannah.gnu.org/cgit/emacs.git/snapshot/emacs-master.tar.gz
 
-if test -n "$1"; then
+if [[ -n "$1" ]]; then
     emacs_src_url="${SRC_BASE_URL}-${1}.tar.gz"
     emacs_src="emacs-${1}"
 else
