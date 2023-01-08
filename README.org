@@ -14,7 +14,7 @@ git clone https://github.com/Eason0210/build-emacs.git ~/src/build-emacs
 cd ~/src/build-emacs
 
 # Choose one of the following COMMAND to execute
-./build-emacs.sh # build the emacs-29 default commit --without-native-compilation=aot
+./build-emacs.sh # build the emacs-29 default commit --with-native-compilation=aot
 ./build-emacs.sh --without-native-compilation # emacs-29 without native-comp
 ./build-emacs.sh master # build latest master branch
 ./build-emacs.sh <commit-id> # build the specified <commit-id>
