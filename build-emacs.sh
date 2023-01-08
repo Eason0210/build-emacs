@@ -61,13 +61,11 @@ cd "${ROOT_DIR}/emacs-tarballs"
 
 # Check for valid Git commit hash
 GIT_COMMIT=$1
-if [[ "$GIT_COMMIT" = "master" || "$GIT_COMMIT" = "emacs-29" || "$GIT_COMMIT" =~ ^[a-zA-Z0-9]{40}$ ]]
-then
+if [[ "$GIT_COMMIT" = "master" || "$GIT_COMMIT" = "emacs-29" || "$GIT_COMMIT" =~ ^[a-zA-Z0-9]{40}$ ]]; then
     printf "Git commit hash is valid.\n"
     emacs_src_url="${SRC_BASE_URL}-${GIT_COMMIT}.tar.gz"
     emacs_src="emacs-${GIT_COMMIT}"
-elif [[ -z "$1" ]] || [[ "$1" = "${NATIVE_COMP}" ]]
-then
+elif [[ -z "$1" ]] || [[ "$1" = "${NATIVE_COMP}" ]]; then
     printf "The emacs-29 branch will be used.\n"
     emacs_src_url="${SRC_BASE_URL}-emacs-29.tar.gz"
     emacs_src="emacs-emacs-29"
@@ -200,16 +198,13 @@ echo "
 [[ "$OSTYPE" =~ ^darwin ]] && pkill -i emacs
 
 
-if [[ "$OSTYPE" =~ ^darwin ]]
-then
+if [[ "$OSTYPE" =~ ^darwin ]]; then
     # Remove old emacs
     # See https://stackoverflow.com/a/677212/6277148
     # and https://stackoverflow.com/a/638980/6277148
     # for discussion of confitional checks for files
-    if [ -e /Applications/Emacs.app ]
-    then
-        if command -v trash </dev/null 2>&1
-        then
+    if [ -e /Applications/Emacs.app ]; then
+        if command -v trash </dev/null 2>&1; then
             echo "Trashing old emacs..."
             trash /Applications/Emacs.app
         else
