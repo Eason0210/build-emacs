@@ -16,6 +16,9 @@ START_DATE=$(date +"%s")
 ROOT_DIR="$(pwd)"
 SRC_BASE_URL="https://git.savannah.gnu.org/cgit/emacs.git/snapshot/emacs"
 
+# Default commit from emacs-29 branch
+REV_COMMIT="1469aac20d8ebcd3c5cca898b814c305278d4c27"
+
 # Use on Windows OS only
 INSTALL_DIR="/c/opt/emacs-build"
 
@@ -66,9 +69,9 @@ if [[ "$GIT_COMMIT" = "master" || "$GIT_COMMIT" = "emacs-29" || "$GIT_COMMIT" =~
     emacs_src_url="${SRC_BASE_URL}-${GIT_COMMIT}.tar.gz"
     emacs_src="emacs-${GIT_COMMIT}"
 elif [[ -z "$1" ]] || [[ "$1" = "${NATIVE_COMP}" ]]; then
-    printf "The emacs-29 branch will be used.\n"
-    emacs_src_url="${SRC_BASE_URL}-emacs-29.tar.gz"
-    emacs_src="emacs-emacs-29"
+    echo "The emacs-29 ${REV_COMMIT} will be used.\n"
+    emacs_src_url="${SRC_BASE_URL}-${REV_COMMIT}.tar.gz"
+    emacs_src="emacs-${REV_COMMIT}"
 else
     printf "Error! Please give a valid Git commit hash.\n"
     exit 1
