@@ -47,8 +47,8 @@ echo "
 # ======================================================
 "
 
-mkdir -p "${ROOT_DIR}/emacs-tarballs"
-cd "${ROOT_DIR}/emacs-tarballs"
+mkdir -p "${ROOT_DIR}/tarballs"
+cd "${ROOT_DIR}/tarballs"
 
 
 # ======================================================
@@ -74,7 +74,7 @@ else
     exit 1
 fi
 
-emacs_src_tarball="${ROOT_DIR}/emacs-tarballs/${emacs_src}.tar.gz"
+emacs_src_tarball="${ROOT_DIR}/tarballs/${emacs_src}.tar.gz"
 [[ -f "$emacs_src_tarball" ]] && rm "$emacs_src_tarball" && echo "Removed the ${emacs_src_tarball}"
 
 echo "
@@ -104,10 +104,10 @@ $TAR_CMD -xjf $emacs_src_tarball || echo "Ger error when tar -xjf ${emacs_src_ta
 echo "Unzipping ${emacs_src_tarball} suceeded!"
 
 
-cd "${ROOT_DIR}/emacs-tarballs/${emacs_src}"
+cd "${ROOT_DIR}/tarballs/${emacs_src}"
 echo "Current directory is: " && pwd
 
-SRC_DIR="${ROOT_DIR}/emacs-tarballs/${emacs_src}"
+SRC_DIR="${ROOT_DIR}/tarballs/${emacs_src}"
 
 echo "
 # ======================================================
