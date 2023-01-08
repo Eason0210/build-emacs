@@ -269,17 +269,15 @@ echo "DONE!"
 
 echo "
 # ======================================================
-# Add executables to path
-#
-"
+# Add executable to PATH
+# ======================================================"
 
 if [[ "$OSTYPE" =~ ^darwin ]]; then
     echo "
 # Be sure to add /Applications/Emacs.app/Contents/MacOS/bin
-# to your .zshrc or .profile path like so:
+# to your .zshrc or .profile PATH like so:
 # export PATH=\$PATH:/Applications/Emacs.app/Contents/MacOS
 # export PATH=\$PATH:/Applications/Emacs.app/Contents/MacOS/bin
-# ======================================================
 "
     export PATH=$PATH:/Applications/Emacs.app/Contents/MacOS
     export PATH=$PATH:/Applications/Emacs.app/Contents/MacOS/bin
@@ -291,8 +289,7 @@ modify $HOME/.zshrc or $HOME/.zshenv accordingly
 else
     echo "
 # Please rename ${INSTALL_DIR} to C:\opt\emacs
-# And add C:\opt\emacs\bin to your Path environment
-# ======================================================
+# And add C:\opt\emacs\bin to your PATH
 "
 fi
 
