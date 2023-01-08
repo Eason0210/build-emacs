@@ -17,6 +17,7 @@ ROOT_DIR="$(pwd)"
 SRC_BASE_URL="https://git.savannah.gnu.org/cgit/emacs.git/snapshot/emacs"
 
 # Default commit from emacs-29 branch
+# https://git.savannah.gnu.org/cgit/emacs.git/commit/?h=emacs-29&id=1469aac20d8ebcd3c5cca898b814c305278d4c27
 REV_COMMIT="1469aac20d8ebcd3c5cca898b814c305278d4c27"
 
 # Use on Windows OS only
