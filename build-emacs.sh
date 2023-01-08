@@ -228,9 +228,29 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
     # Copy C source files to Emacs
     cp -r ${SRC_DIR}/src /Applications/Emacs.app/Contents/Resources/
 
+    echo "
+# Please set find-function-C-source-directory to
+# /Applications/Emacs.app/Contents/Resources/ in you init.el"
+
     echo "DONE!"
 
+elif [[ "$OSTYPE" =~ ^msys ]]; then
+    echo "
+# ======================================================
+# Copy C Source Code
+# ======================================================
+"
+    # Copy C source files to Emacs
+    cp -r "${SRC_DIR}/src" "$INSTALL_DIR/"
+
+    echo "
+# Please set find-function-C-source-directory to
+# $INSTALL_DIR/src/ in you init.el"
+
+    echo "DONE!"
 fi
+
+
 
 echo "
 # ======================================================
