@@ -23,7 +23,7 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
     RES_DIR="/Applications/Emacs.app/Contents/Resources"
     SITELISP="${RES_DIR}/site-lisp"
 elif [[ "$OSTYPE" =~ ^msys ]]; then
-    INSTALL_DIR="/c/opt/emacs-build"
+    INSTALL_DIR="c:/opt/emacs"
     RES_DIR="${INSTALL_DIR}/share/emacs"
     SITELISP="${INSTALL_DIR}/share/emacs/site-lisp"
 
@@ -352,8 +352,7 @@ modify $HOME/.zshrc or $HOME/.zshenv accordingly
 "
 else
     echo "
-# Please rename ${INSTALL_DIR} to C:\opt\emacs
-# And add C:\opt\emacs\bin to your PATH
+# And add ${INSTALL_DIR}\bin to your PATH
 "
 fi
 
