@@ -7,15 +7,7 @@ Bash Shell scripts for building [[https://git.savannah.gnu.org/cgit/emacs.git/][
 Install by macports
 ** Windows
 Install by mingw64 with msys2
-
-* Record the emacs commit from built
-Set the build commit to  emacs-repository-version. ~C-h v emacs-repository-version~ to get the commit id.
-#+begin_src emacs-lisp
-(setq emacs-repository-version
-      (string-trim (file-name-nondirectory (string-trim source-directory "" "/")) "emacs-"))
-
 #+end_src
-
 * Usage
 #+begin_src bash
 git clone https://github.com/Eason0210/build-emacs.git ~/src/build-emacs
