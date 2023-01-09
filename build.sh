@@ -293,7 +293,8 @@ echo "
 if [[ "$OSTYPE" =~ ^darwin ]]; then
     # Copy new icon to emacs (currently using a big sur icon)
     # See https://github.com/d12frosted/homebrew-emacs-plus/issues/419
-    cp "${ROOT_DIR}/materials/emacs-big-sur.icns" "${RES_DIR}/Emacs.icns"
+    # cp "${ROOT_DIR}/materials/icons/emacs-big-sur.icns" "${RES_DIR}/Emacs.icns"
+    cp "${ROOT_DIR}/materials/icons/retro-gnu-meditate-levitate.icns" "${RES_DIR}/Emacs.icns"
 
     echo "DONE!"
 fi
