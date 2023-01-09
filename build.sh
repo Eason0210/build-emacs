@@ -352,7 +352,7 @@ modify $HOME/.zshrc or $HOME/.zshenv accordingly
 "
 else
     echo "
-# And add ${INSTALL_DIR}\bin to your PATH
+# And add c:\opt\emacs\bin to your PATH
 "
 fi
 
