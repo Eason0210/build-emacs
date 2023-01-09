@@ -79,7 +79,7 @@ fi
 
 # Check for valid Git commit hash
 
-if [[ "$1" =~ ^[a-zA-Z0-9]{40}$ ]]; then
+if [[ "$1" =~ ^[a-zA-Z0-9]{7,40}$ ]]; then
     echo "Git commit hash is valid."
     commit="$1"
 elif [[ -z "$1" ]] || [[ "$1" = "${NATIVE_COMP}" ]]; then
