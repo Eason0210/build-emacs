@@ -322,8 +322,7 @@ echo "
 # ======================================================
 "
 
-# Delete src dir and build dir
-rm -rf "${SRC_DIR}"
+# Delete build dir
 rm -rf "${BUILD_DIR}"
 
 echo "DONE!"
