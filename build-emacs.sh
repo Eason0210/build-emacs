@@ -70,15 +70,15 @@ cd "${ROOT_DIR}/tarballs"
 # Check for valid Git commit hash
 GIT_COMMIT=$1
 if [[ "$GIT_COMMIT" = "master" || "$GIT_COMMIT" = "emacs-29" || "$GIT_COMMIT" =~ ^[a-zA-Z0-9]{40}$ ]]; then
-    printf "Git commit hash is valid.\n"
+    echo "Git commit hash is valid."
     emacs_src_url="${SRC_BASE_URL}-${GIT_COMMIT}.tar.gz"
     emacs_src="emacs-${GIT_COMMIT}"
 elif [[ -z "$1" ]] || [[ "$1" = "${NATIVE_COMP}" ]]; then
-    echo "The emacs-29 ${REV_COMMIT} will be used.\n"
+    echo "The emacs-29 ${REV_COMMIT} will be used."
     emacs_src_url="${SRC_BASE_URL}-${REV_COMMIT}.tar.gz"
     emacs_src="emacs-${REV_COMMIT}"
 else
-    printf "Error! Please give a valid Git commit hash.\n"
+    echo "Error! Please give a valid Git commit hash."
     exit 1
 fi
 
