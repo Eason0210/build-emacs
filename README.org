@@ -21,3 +21,7 @@ cd ~/src/build-emacs
 ./build-emacs.sh <commit-id> --without-native-compilation
 
 #+end_src
+
+* References
+- [[https://github.com/mclear-tools/build-emacs-macos][build-emacs-macos]]
+- [[https://github.com/d12frosted/homebrew-emacs-plus][homebrew-emacs-plus]]
