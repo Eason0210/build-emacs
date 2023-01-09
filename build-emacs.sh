@@ -258,7 +258,7 @@ elif [[ "$OSTYPE" =~ ^msys ]]; then
     cp -r "${SRC_DIR}/src" "$INSTALL_DIR/"
 
     # Set emacs-repository-version and find-function-C-source-directory
-    SITELISP="${INSTALL_DIR/share/emacs/site-lisp}"
+    SITELISP="${INSTALL_DIR}/share/emacs/site-lisp"
     touch "./site-start.el" && echo "(setq emacs-repository-version \"${REV_COMMIT}\")" > "./site-start.el"
     echo "(setq find-function-C-source-directory \"c:/opt/emacs/src/\")" >> "./site-start.el"
     mv "./site-start.el" "${SITELISP}/" && echo "Moved site-start.el to ${SITELISP} directory."
