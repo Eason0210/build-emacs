@@ -73,6 +73,7 @@ if [[ "$GIT_COMMIT" = "master" || "$GIT_COMMIT" = "emacs-29" || "$GIT_COMMIT" =~
     echo "Git commit hash is valid."
     emacs_src_url="${SRC_BASE_URL}-${GIT_COMMIT}.tar.gz"
     emacs_src="emacs-${GIT_COMMIT}"
+    REV_COMMIT=$GIT_COMMIT
 elif [[ -z "$1" ]] || [[ "$1" = "${NATIVE_COMP}" ]]; then
     echo "The emacs-29 ${REV_COMMIT} will be used."
     emacs_src_url="${SRC_BASE_URL}-${REV_COMMIT}.tar.gz"
@@ -239,9 +240,11 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
     # Copy C source files to Emacs
     cp -r ${SRC_DIR}/src /Applications/Emacs.app/Contents/Resources/
 
-    echo "
-# Please set find-function-C-source-directory to
-# /Applications/Emacs.app/Contents/Resources/ in you init.el"
+    # Set emacs-repository-version and find-function-C-source-directory
+    SITELISP="/Applications/Emacs.app/Contents/Resources/site-lisp"
+    touch "./site-start.el" && echo "(setq emacs-repository-version \"${REV_COMMIT}\")" > "./site-start.el"
+    echo "(setq find-function-C-source-directory \"/Applications/Emacs.app/Contents/Resources/src/\")" >> "./site-start.el"
+    mv "./site-start.el" "${SITELISP}/" && echo "Moved site-start.el to ${SITELISP} directory."
 
     echo "DONE!"
 
@@ -254,9 +257,11 @@ elif [[ "$OSTYPE" =~ ^msys ]]; then
     # Copy C source files to Emacs
     cp -r "${SRC_DIR}/src" "$INSTALL_DIR/"
 
-    echo "
-# Please set find-function-C-source-directory to
-# $INSTALL_DIR/src/ in you init.el"
+    # Set emacs-repository-version and find-function-C-source-directory
+    SITELISP="${INSTALL_DIR/share/emacs/site-lisp}"
+    touch "./site-start.el" && echo "(setq emacs-repository-version \"${REV_COMMIT}\")" > "./site-start.el"
+    echo "(setq find-function-C-source-directory \"c:/opt/emacs/src/\")" >> "./site-start.el"
+    mv "./site-start.el" "${SITELISP}/" && echo "Moved site-start.el to ${SITELISP} directory."
 
     echo "DONE!"
 fi
