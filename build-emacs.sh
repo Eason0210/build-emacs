@@ -18,8 +18,8 @@ BUILD_DIR="${ROOT_DIR}/build"
 SRC_BASE_URL="https://git.savannah.gnu.org/cgit/emacs.git/snapshot/emacs"
 
 # Default commit from emacs-29 branch
-# https://git.savannah.gnu.org/cgit/emacs.git/commit/?h=emacs-29&id=1469aac20d8ebcd3c5cca898b814c305278d4c27
-REV_COMMIT="1469aac20d8ebcd3c5cca898b814c305278d4c27"
+# https://git.savannah.gnu.org/cgit/emacs.git/commit/?h=emacs-29&id=20f36c8f6f98478dd86ddfe93da2803de2518ea2
+REV_COMMIT="20f36c8f6f98478dd86ddfe93da2803de2518ea2"
 
 # Use on Windows OS only
 INSTALL_DIR="/c/opt/emacs-build"
