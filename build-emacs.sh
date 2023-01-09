@@ -14,6 +14,7 @@
 
 START_DATE=$(date +"%s")
 ROOT_DIR="$(pwd)"
+BUILD_DIR="${ROOT_DIR}/build"
 SRC_BASE_URL="https://git.savannah.gnu.org/cgit/emacs.git/snapshot/emacs"
 
 # Default commit from emacs-29 branch
@@ -50,6 +51,9 @@ echo "
 # Start with a clean build
 # ======================================================
 "
+
+[[ -d "${BUILD_DIR}" ]] && rm -rf "${BUILD_DIR}"
+mkdir -p "${BUILD_DIR}"
 
 mkdir -p "${ROOT_DIR}/tarballs"
 cd "${ROOT_DIR}/tarballs"
@@ -104,14 +108,25 @@ else
     TAR_CMD="tar"
 fi
 
+
 $TAR_CMD -xjf $emacs_src_tarball || echo "Ger error when tar -xjf ${emacs_src_tarball}"
 echo "Unzipping ${emacs_src_tarball} suceeded!"
 
-
-cd "${ROOT_DIR}/tarballs/${emacs_src}"
+$TAR_CMD -xzf $emacs_src_tarball -C $BUILD_DIR && echo "tar source code to ${BUILD_DIR} finished."
+cd "${BUILD_DIR}/${emacs_src}"
 echo "Current directory is: " && pwd
 
+
 SRC_DIR="${ROOT_DIR}/tarballs/${emacs_src}"
+
+# Check the install directory for Windows build
+if [[ "$OSTYPE" =~ ^msys ]]; then
+    # If "$INSTALL_DIR" exit, remove it and create a new one
+    [[ -d "$INSTALL_DIR" ]] && rm -rf "$INSTALL_DIR" && mkdir -p "$INSTALL_DIR"
+
+    # if "$INSTALL_DIR" not exit, create a new one
+    [[ -d "$INSTALL_DIR" ]] || mkdir -p "$INSTALL_DIR"
+fi
 
 echo "
 # ======================================================
@@ -168,14 +183,6 @@ echo "
 # Build and install everything
 # ======================================================
 "
-# Check the install directory for Windows build
-if [[ "$OSTYPE" =~ ^msys ]]; then
-    # If "$INSTALL_DIR" exit, remove it and create a new one
-    [[ -d "$INSTALL_DIR" ]] && rm -rf "$INSTALL_DIR" && mkdir -p "$INSTALL_DIR"
-
-    # if "$INSTALL_DIR" not exit, create a new one
-    [[ -d "$INSTALL_DIR" ]] || mkdir -p "$INSTALL_DIR"
-fi
 
 # Check number of processors & use as many as we can!
 NCPU=$(expr $(getconf _NPROCESSORS_ONLN) / 2)
@@ -218,9 +225,9 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
     fi
 
     # Move build to applications folder
-    mv ${SRC_DIR}/nextstep/Emacs.app /Applications/Emacs.app
+    mv ${BUILD_DIR}/${emacs_src}/nextstep/Emacs.app /Applications/Emacs.app
 
-    echo "Move ${SRC_DIR}/nextstep/Emacs.app to /Applications folder DONE!"
+    echo "Move ${BUILD_DIR}/${emacs_src}/nextstep/Emacs.app to /Applications folder DONE!"
 
 
     echo "
@@ -269,9 +276,9 @@ echo "
 cur_dateTime="$(date +%Y-%m-%d)-T$(date +%H-%M-%S)"
 echo "Current day is: $cur_dateTime"
 mkdir -p ${ROOT_DIR}/build-logs/
-mv "${SRC_DIR}/config.log" "${ROOT_DIR}/build-logs/config-${cur_dateTime}.log"
-mv "${SRC_DIR}/build-log.txt" "${ROOT_DIR}/build-logs/build-log-${cur_dateTime}.txt"
-mv "${SRC_DIR}/bootstrap-log.txt" "${ROOT_DIR}/build-logs/bootstrap-log-${cur_dateTime}.txt"
+mv "${BUILD_DIR}/${emacs_src}/config.log" "${ROOT_DIR}/build-logs/config-${cur_dateTime}.log"
+mv "${BUILD_DIR}/${emacs_src}/build-log.txt" "${ROOT_DIR}/build-logs/build-log-${cur_dateTime}.txt"
+mv "${BUILD_DIR}/${emacs_src}/bootstrap-log.txt" "${ROOT_DIR}/build-logs/bootstrap-log-${cur_dateTime}.txt"
 
 echo "DONE!"
 
@@ -281,8 +288,9 @@ echo "
 # ======================================================
 "
 
-# Delete build dir
-rm -rf ${SRC_DIR}
+# Delete src dir and build dir
+rm -rf "${SRC_DIR}"
+rm -rf "${BUILD_DIR}/${emacs_src}"
 
 echo "DONE!"
 
