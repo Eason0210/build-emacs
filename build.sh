@@ -63,6 +63,8 @@ echo "
 mkdir -p "${BUILD_DIR}"
 
 cd "${SRC_DIR}"
+[[ -d "${SRC_DIR}" ]] || exit 1
+
 
 # Check the install directory for Windows build
 if [[ "$OSTYPE" =~ ^msys ]]; then
