@@ -260,6 +260,10 @@ echo "
 # Copy C source files to Emacs
 cp -r "${SRC_DIR}/src" "${RES_DIR}/"
 
+# Help Emacs to find the coped SRC directory
+echo "(setq find-function-C-source-directory \"${RES_DIR}/src/\")" > "./site-start.el"
+mv "./site-start.el" "${SITELISP}/" && echo "Moved site-start.el to ${SITELISP} directory."
+
 echo "DONE!"
 
 
