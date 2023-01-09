@@ -97,6 +97,7 @@ else
     exit 1
 fi
 
+[[ "$OSTYPE" =~ ^msys ]] && git config core.autocrlf false
 git archive --format tar $commit | tar -C ${BUILD_DIR} -xf -
 
 # ======================================================
