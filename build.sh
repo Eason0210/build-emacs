@@ -256,22 +256,6 @@ fi
 
 echo "
 # ======================================================
-# Copy C Source Code
-# ======================================================
-"
-
-# Copy C source files to Emacs
-cp -r "${SRC_DIR}/src" "${RES_DIR}/"
-
-# Help Emacs to find the coped SRC directory
-echo "(setq find-function-C-source-directory \"${RES_DIR}/src/\")" > "./site-start.el"
-mv "./site-start.el" "${SITELISP}/" && echo "Moved site-start.el to ${SITELISP} directory."
-
-echo "DONE!"
-
-
-echo "
-# ======================================================
 # Record Git SHA
 # ======================================================
 "
@@ -282,6 +266,23 @@ echo "
 cp ${ROOT_DIR}/materials/${GIT_VERSION} ${BUILD_DIR}/
 sed -e "s/@@GIT_COMMIT@@/$REV/" -i '' ${BUILD_DIR}/${GIT_VERSION}
 mv -f ${BUILD_DIR}/${GIT_VERSION} ${SITELISP}/${GIT_VERSION}
+
+echo "(require 'emacs-git-version)" > "./site-start.el"
+
+echo "DONE!"
+
+echo "
+# ======================================================
+# Copy C Source Code
+# ======================================================
+"
+
+# Copy C source files to Emacs
+cp -r "${SRC_DIR}/src" "${RES_DIR}/"
+
+# Help Emacs to find the coped SRC directory
+echo "(setq find-function-C-source-directory \"${RES_DIR}/src/\")" >> "./site-start.el"
+mv "./site-start.el" "${SITELISP}/" && echo "Moved site-start.el to ${SITELISP} directory."
 
 echo "DONE!"
 
