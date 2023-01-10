@@ -134,7 +134,7 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
       nextstep/templates/Info.plist.in
       nextstep/templates/InfoPlist.strings.in"
 
-    DAY=`date -u -r $TIMESTAMP +"%Y-%m-%d_%H-%M-%S"`
+    DAY=`date -u -r $TIMESTAMP +"%Y-%m-%d %H:%M:%S"`
     ORIG=`grep ^AC_INIT configure.ac`
     VNUM=`echo $ORIG | sed 's#^AC_INIT(\(.*\))#\1#; s/ //g' | cut -f2 -d,`
     VERS="$DAY Git $REV"
