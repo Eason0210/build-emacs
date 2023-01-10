@@ -1,11 +1,8 @@
 ;;; emacs-git-version.el --- record git commit of Emacs -*- lexical-binding: t -*-
 
-;; Copyright © 2012 Sébastien Gross <seb•ɑƬ•chezwam•ɖɵʈ•org>
-
-;; Original Author: Sébastien Gross <seb•ɑƬ•chezwam•ɖɵʈ•org>
-;; Modified: Eason Huang
+;; Author: Eason Huang <aqua0210@gmail.com>
 ;; Keywords: emacs
-;; Created: 2012-09-21;
+;; Created: 2023-01-10
 ;; Last changed: 2023-01-10 21:38:00
 
 ;; This file is NOT part of GNU Emacs.
