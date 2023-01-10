@@ -105,7 +105,7 @@ git archive --format tar $commit | tar -C ${BUILD_DIR} -xf -
 # ======================================================
 
 REV=`git log -n 1 --no-color --pretty='format:%h' ${commit}`
-TIMESTAMP=`git log -n 1 --no-color --pretty='format:%at' ${commit}`
+DAY=`git log -n 1 --no-color --pretty='format:%ai' ${commit}`
 PATCH_LIST=`find ${ROOT_DIR}/patches/ -name '*.patch'`
 
 cd ${BUILD_DIR} && echo "Current directory is: " && pwd
@@ -134,7 +134,6 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
       nextstep/templates/Info.plist.in
       nextstep/templates/InfoPlist.strings.in"
 
-    DAY=`date -u -r $TIMESTAMP +"%Y-%m-%d %H:%M:%S"`
     ORIG=`grep ^AC_INIT configure.ac`
     VNUM=`echo $ORIG | sed 's#^AC_INIT(\(.*\))#\1#; s/ //g' | cut -f2 -d,`
     VERS="$DAY Git $REV"
