@@ -33,7 +33,7 @@ else
 fi
 
 # Native compilation
-NATIVE_COMP="--with-native-compilation=aot"
+NATIVE_COMP="--without-native-compilation"
 
 NATIVE_COMP_LIST=(
     "--with-native-compilation=aot"
