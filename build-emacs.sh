@@ -83,9 +83,9 @@ if [[ "$1" =~ ^[a-zA-Z0-9]{7,40}$ ]]; then
     echo "Git commit hash is valid."
     commit="$1"
 elif [[ -z "$1" ]] || [[ "$1" = "${NATIVE_COMP}" ]]; then
-    echo "The latest emacs-29 will be used."
-    commit="origin/emacs-29"
-    git checkout emacs-29
+    echo "The latest Emacs master branch will be used."
+    commit="origin/master"
+    git checkout master
     git pull
 elif [[ "$1" = "master" || "$1" = "emacs-29" ]]; then
     echo "The orgin/${1} will be used."
