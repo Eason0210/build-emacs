@@ -10,6 +10,8 @@ Install by mingw64 with msys2
 #+end_src
 * Usage
 #+begin_src bash
+git clone https://git.savannah.gnu.org/git/emacs.git ~/src/emacs
+
 git clone https://github.com/Eason0210/build-emacs.git ~/src/build-emacs
 cd ~/src/build-emacs
 
