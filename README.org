@@ -14,11 +14,18 @@ git clone https://github.com/Eason0210/build-emacs.git ~/src/build-emacs
 cd ~/src/build-emacs
 
 # Choose one of the following COMMAND to execute
-./build-emacs.sh # Build emacs-29 --with-native-compilation=aot
-./build-emacs.sh --without-native-compilation # Build emacs-29 without native-comp
-./build-emacs.sh master # Build master branch --with-native-compilation=aot
-./build-emacs.sh <commit-id> # Build <commit-id> --with-native-compilation=aot
-./build-emacs.sh <commit-id> --without-native-compilation
+
+./build-emacs.sh # Build master branch without native-comp support
+./build-emacs.sh --with-native-compilation # Build master branch with native-comp support
+./build-emacs.sh --with-native-compilation=aot # Build master branch with native-comp support and enabled AOT
+
+./build-emacs.sh emacs-29 # Build emacs-29 branch without native-comp support
+./build-emacs.sh emacs-29 --with-native-compilation # Build emacs-29 branch with native-comp support
+./build-emacs.sh emacs-29 --with-native-compilation=aot # Build emacs-29 branch with native-comp support and enabled AOT
+
+./build-emacs.sh <commit-id> # Build <commit-id> without native-comp support
+./build-emacs.sh <commit-id> --with-native-compilation
+./build-emacs.sh <commit-id> --with-native-compilation=aot
 
 #+end_src
 
