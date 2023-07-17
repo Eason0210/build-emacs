@@ -68,7 +68,7 @@ cd "${SRC_DIR}"
 
 # Check the install directory for Windows build
 if [[ "$OSTYPE" =~ ^msys ]]; then
-    [[ -d "$INSTALL_DIR" ]] && rm -rf "$INSTALL_DIR"
+    [[ -d "$INSTALL_DIR" ]] && mv "$INSTALL_DIR" "${INSTALL_DIR}-$(date +%Y-%m-%d)"
     mkdir -p "$INSTALL_DIR"
 fi
 
