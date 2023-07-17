@@ -196,8 +196,9 @@ echo "
 # Note that this renames ctags in emacs so that it doesn't conflict with other
 # installed ctags; see and don't compress info files, etc
 # https://www.topbug.net/blog/2016/11/10/installing-emacs-from-source-avoid-the-conflict-of-ctags/
-if [[ "$OSTYPE" =~ ^msys ]]; then
-    # https://git.savannah.gnu.org/cgit/emacs.git/commit/?h=emacs-29&id=679e9d7c56e2296e3a218290d941e28002bf7722
+if [[ "$OSTYPE" =~ ^msys ]] && [[ ${NATIVE_COMP} =~ ^--with-native-compilation ]]; then
+    echo "Warning: CFLAGS='-O2 -fno-optimize-sibling-calls'; see details: https://git.savannah.gnu.org/cgit/emacs.git/commit/?h=emacs-29&id=679e9d7c56e2296e3a218290d941e28002bf7722
+"
     CFLAGS='-O2 -fno-optimize-sibling-calls' ./configure ${NATIVE_COMP} --without-dbus
 else
     ./configure ${NATIVE_COMP} --without-dbus
