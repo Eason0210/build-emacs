@@ -49,10 +49,6 @@ done
 
 echo "native-comp: ${NATIVE_COMP}"
 
-# Enable proxy
-export https_proxy="http://127.0.0.1:8889" && echo "HTTPS proxy enabled."
-
-
 echo "
 # ======================================================
 # Start with a clean build
