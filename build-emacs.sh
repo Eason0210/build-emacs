@@ -161,12 +161,12 @@ echo "
 
 if [[ "$OSTYPE" =~ ^darwin ]]; then
     export LDFLAGS='-L/opt/local/lib -Wl,-headerpad_max_install_names -Wl'
-    LDFLAGS+=',-rpath /opt/local/lib/gcc12 -Wl,-syslibroot'
+    LDFLAGS+=',-rpath /opt/local/lib/gcc13 -Wl,-syslibroot'
     LDFLAGS+=',/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -arch x86_64'
 
-    export LIBRARY_PATH='/opt/local/lib/gcc12:/opt/local/lib'
+    export LIBRARY_PATH='/opt/local/lib/gcc13:/opt/local/lib'
     export CPPFLAGS='-I/opt/local/include -isysroot/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk'
-    export CPATH='/opt/local/include/gcc12:/opt/local/include'
+    export CPATH='/opt/local/include/gcc13:/opt/local/include'
 else
     echo "No extra flags need to configure on current system."
 fi
