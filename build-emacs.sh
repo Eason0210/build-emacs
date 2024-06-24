@@ -70,7 +70,7 @@ fi
 
 
 # ======================================================
-# Input for version otherwise default to emacs-29 branch
+# Input for version otherwise default to master branch
 # ======================================================
 
 # Check for valid Git commit hash
