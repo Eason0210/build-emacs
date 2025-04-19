@@ -267,7 +267,8 @@ cp ${ROOT_DIR}/materials/${GIT_VERSION} ${BUILD_DIR}/
 sed -e "s/@@GIT_COMMIT@@/$REV/" -i '' ${BUILD_DIR}/${GIT_VERSION}
 mv -f ${BUILD_DIR}/${GIT_VERSION} ${SITELISP}/${GIT_VERSION}
 
-echo "(require 'emacs-git-version)" > "./site-start.el"
+echo ";;; site-start.el    -*- lexical-binding: t -*-" > "./site-start.el"
+echo "(require 'emacs-git-version)" >> "./site-start.el"
 
 echo "DONE!"
 
