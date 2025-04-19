@@ -22,7 +22,7 @@ GIT_VERSION="emacs-git-version.el"
 if [[ "$OSTYPE" =~ ^darwin ]]; then
     RES_DIR="/Applications/Emacs.app/Contents/Resources"
     SITELISP="${RES_DIR}/site-lisp"
-elif [[ "$OSTYPE" =~ ^msys ]]; then
+elif [[ "$OSTYPE" =~ ^cygwin ]]; then
     INSTALL_DIR="c:/opt/emacs"
     RES_DIR="${INSTALL_DIR}/share/emacs"
     SITELISP="${INSTALL_DIR}/share/emacs/site-lisp"
@@ -63,7 +63,7 @@ cd "${SRC_DIR}"
 
 
 # Check the install directory for Windows build
-if [[ "$OSTYPE" =~ ^msys ]]; then
+if [[ "$OSTYPE" =~ ^cygwin ]]; then
     [[ -d "$INSTALL_DIR" ]] && mv "$INSTALL_DIR" "${INSTALL_DIR}-$(date +%Y%m%dT%H%M%S)"
     mkdir -p "$INSTALL_DIR"
 fi
@@ -93,7 +93,7 @@ else
     exit 1
 fi
 
-[[ "$OSTYPE" =~ ^msys ]] && git config core.autocrlf false
+[[ "$OSTYPE" =~ ^cygwin ]] && git config core.autocrlf false
 git archive --format tar $commit | tar -C ${BUILD_DIR} -xf -
 
 # ======================================================
@@ -192,7 +192,7 @@ echo "
 # Note that this renames ctags in emacs so that it doesn't conflict with other
 # installed ctags; see and don't compress info files, etc
 # https://www.topbug.net/blog/2016/11/10/installing-emacs-from-source-avoid-the-conflict-of-ctags/
-# if [[ "$OSTYPE" =~ ^msys ]] && [[ ${NATIVE_COMP} =~ ^--with-native-compilation ]]; then
+# if [[ "$OSTYPE" =~ ^cygwin ]] && [[ ${NATIVE_COMP} =~ ^--with-native-compilation ]]; then
 #     echo "Warning: CFLAGS='-O2 -fno-optimize-sibling-calls'; see details: https://git.savannah.gnu.org/cgit/emacs.git/commit/?h=emacs-29&id=679e9d7c56e2296e3a218290d941e28002bf7722
 # "
 #     CFLAGS='-O2 -fno-optimize-sibling-calls' ./configure ${NATIVE_COMP} --without-dbus
@@ -214,7 +214,7 @@ NCPU=$(expr $(getconf _NPROCESSORS_ONLN) / 2)
 # Send output to log file using tee
 # See https://stackoverflow.com/a/60432203/6277148
 
-if [[ "$OSTYPE" =~ ^msys ]]; then
+if [[ "$OSTYPE" =~ ^cygwin ]]; then
     make -j$NCPU | tee bootstrap-log.txt || exit 1 && make install -j$NCPU prefix=$INSTALL_DIR | tee build-log.txt
 else
     make -j$NCPU | tee bootstrap-log.txt || exit 1 && make install -j$NCPU | tee build-log.txt
