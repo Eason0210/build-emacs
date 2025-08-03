@@ -83,7 +83,7 @@ elif [[ -z "$1" ]] || [[ "$1" = "${NATIVE_COMP}" ]]; then
     commit="origin/master"
     git checkout master
     git pull
-elif [[ "$1" = "master" || "$1" = "emacs-29" || "$1" = "emacs-30" ]]; then
+elif [[ "$1" = "master" || "$1" = "feature/igc" || "$1" = "emacs-30" ]]; then
     echo "The orgin/${1} will be used."
     commit="origin/${1}"
     git checkout "$1"
@@ -200,7 +200,11 @@ echo "
 #     ./configure ${NATIVE_COMP} --without-dbus
 # fi
 
-./configure ${NATIVE_COMP} --without-dbus
+if [[ "$1" = "feature/igc" ]]; then
+    ./configure ${NATIVE_COMP} --without-dbus --with-mps=yes
+else
+    ./configure ${NATIVE_COMP} --without-dbus
+fi
 
 echo "
 # ======================================================
