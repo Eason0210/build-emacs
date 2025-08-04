@@ -201,9 +201,9 @@ echo "
 # fi
 
 if [[ "$1" = "feature/igc" ]]; then
-    ./configure ${NATIVE_COMP} --without-dbus --with-mps=yes
+    ./configure ${NATIVE_COMP} --without-dbus --with-mps=yes CFLAGS="-O2 -pipe -march=native -fomit-frame-pointer"
 else
-    ./configure ${NATIVE_COMP} --without-dbus
+    ./configure ${NATIVE_COMP} --without-dbus CFLAGS="-O2 -pipe -march=native -fomit-frame-pointer"
 fi
 
 echo "
