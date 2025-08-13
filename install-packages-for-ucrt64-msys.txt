@@ -35,4 +35,7 @@ pacman -S --needed \
 for Jinx：
  gsudo  New-Item -ItemType SymbolicLink -Path C:\opt\emacs\lib\aspell-0.60 -Target C:\msys64\ucrt64\lib\aspell-0.60
  gsudo  New-Item -ItemType SymbolicLink -Path C:\opt\emacs\lib\enchant-2 -Target C:\msys64\ucrt64\lib\enchant-2
-  
+
+Install tools:
+
+winget install koalaman.shellcheck LLVM.clangd AutoHotkey.AutoHotkey GnuPG.Gpg4win  BurntSushi.ripgrep.MSVC SumatraPDF.SumatraPDF koalaman.shellcheck twpayne.chezmoi  Microsoft.PowerShell FastStone.Capture v2rayA.v2rayA gerardog.gsudo Rizonesoft.Notepad3 7zip.7zip Git.Git Starship.Starship Google.Chrome.EXE JohnMacFarlane.Pandoc
