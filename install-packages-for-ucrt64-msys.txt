@@ -30,11 +30,18 @@ pacman -S --needed \
   automake \
   automake-wrapper \
   git \
-  make
+  make \
+  makensis \
+  zip \
+  unzip \
+  man-db
 
 for Jinx：
  gsudo  New-Item -ItemType SymbolicLink -Path C:\opt\emacs\lib\aspell-0.60 -Target C:\msys64\ucrt64\lib\aspell-0.60
  gsudo  New-Item -ItemType SymbolicLink -Path C:\opt\emacs\lib\enchant-2 -Target C:\msys64\ucrt64\lib\enchant-2
+
+New-Item -ItemType SymbolicLink -Path 'C:\Program Files\Emacs\emacs-31.0.50\lib\aspell-0.60' -Target 'C:\msys64\ucrt64\lib\aspell-0.60'
+New-Item -ItemType SymbolicLink -Path 'C:\Program Files\Emacs\emacs-31.0.50\lib\enchant-2' -Target 'C:\msys64\ucrt64\lib\enchant-2'
 
 Install tools:
 
