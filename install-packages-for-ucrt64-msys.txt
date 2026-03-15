@@ -1,0 +1,48 @@
+pacman -S --needed base-devel \
+  mingw-w64-ucrt-x86_64-toolchain \
+  mingw-w64-ucrt-x86_64-xpm-nox \
+  mingw-w64-ucrt-x86_64-gmp \
+  mingw-w64-ucrt-x86_64-gnutls \
+  mingw-w64-ucrt-x86_64-libtiff \
+  mingw-w64-ucrt-x86_64-giflib \
+  mingw-w64-ucrt-x86_64-libpng \
+  mingw-w64-ucrt-x86_64-libjpeg-turbo \
+  mingw-w64-ucrt-x86_64-librsvg \
+  mingw-w64-ucrt-x86_64-libwebp \
+  mingw-w64-ucrt-x86_64-lcms2 \
+  mingw-w64-ucrt-x86_64-libxml2 \
+  mingw-w64-ucrt-x86_64-zlib \
+  mingw-w64-ucrt-x86_64-harfbuzz \
+  mingw-w64-ucrt-x86_64-libgccjit \
+  mingw-w64-ucrt-x86_64-sqlite3 \
+  mingw-w64-ucrt-x86_64-libtree-sitter\
+  mingw-w64-ucrt-x86_64-enchant \
+  mingw-w64-ucrt-x86_64-aspell \
+  mingw-w64-ucrt-x86_64-aspell-en \
+  mingw-w64-ucrt-x86_64-hunspell \
+  mingw-w64-ucrt-x86_64-hunspell-en \
+  mingw-w64-ucrt-x86_64-texinfo
+  
+  
+pacman -S --needed \
+  autoconf \
+  autogen \
+  automake \
+  automake-wrapper \
+  git \
+  make \
+  makensis \
+  zip \
+  unzip \
+  man-db
+
+for Jinx：
+ gsudo  New-Item -ItemType SymbolicLink -Path C:\opt\emacs\lib\aspell-0.60 -Target C:\msys64\ucrt64\lib\aspell-0.60
+ gsudo  New-Item -ItemType SymbolicLink -Path C:\opt\emacs\lib\enchant-2 -Target C:\msys64\ucrt64\lib\enchant-2
+
+New-Item -ItemType SymbolicLink -Path 'C:\Program Files\Emacs\emacs-31.0.50\lib\aspell-0.60' -Target 'C:\msys64\ucrt64\lib\aspell-0.60'
+New-Item -ItemType SymbolicLink -Path 'C:\Program Files\Emacs\emacs-31.0.50\lib\enchant-2' -Target 'C:\msys64\ucrt64\lib\enchant-2'
+
+Install tools:
+
+winget install koalaman.shellcheck LLVM.clangd AutoHotkey.AutoHotkey GnuPG.Gpg4win  BurntSushi.ripgrep.MSVC SumatraPDF.SumatraPDF koalaman.shellcheck twpayne.chezmoi  Microsoft.PowerShell FastStone.Capture v2rayA.v2rayA gerardog.gsudo Rizonesoft.Notepad3 7zip.7zip Git.Git Starship.Starship Google.Chrome.EXE JohnMacFarlane.Pandoc
