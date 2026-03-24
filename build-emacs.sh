@@ -200,7 +200,7 @@ echo "
 #     ./configure ${NATIVE_COMP} --without-dbus
 # fi
 
-if [[ "$1" = "feature/igc" ]]; then
+if [[ "$1" = "feature/igc3" ]]; then
     ./configure ${NATIVE_COMP} --without-dbus --with-mps=yes CFLAGS="-O2 -pipe -march=native -fomit-frame-pointer"
 else
     ./configure ${NATIVE_COMP} --without-dbus CFLAGS="-O2 -pipe -march=native -fomit-frame-pointer"
